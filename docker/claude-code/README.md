@@ -1,37 +1,37 @@
 # claude-code container
 
-Python 3.13 + uv + Claude Code CLI が入ったコンテナイメージ。
-ホスト側と同じ UID/GID でユーザーを作成するため、マウントしたファイルの権限問題が起きない。
+Container image with Python 3.13, uv, and Claude Code CLI.
+The container user is created with the same UID/GID as the host, avoiding file permission issues on mounted volumes.
 
-## 構成
+## Files
 
-| ファイル | 説明 |
-|----------|------|
-| `Dockerfile` | `python:3.13-slim-bookworm` ベース。Node.js LTS, Claude Code CLI, uv を含む |
-| `build.sh` | ホストの UID/GID/ユーザー名を自動取得して `docker build` を実行 |
-| `run.sh` | `~/.claude` とカレントディレクトリをマウントして起動 |
+| File | Description |
+|------|-------------|
+| `Dockerfile` | Based on `python:3.13-slim-bookworm`. Includes Node.js LTS, Claude Code CLI, and uv |
+| `build.sh` | Detects host UID/GID/username automatically and runs `docker build` |
+| `run.sh` | Mounts `~/.claude` and the current directory, then starts the container |
 
-## 使い方
+## Usage
 
 ```bash
-# ビルド（イメージ名はデフォルト: claude-code）
+# Build (default image name: claude-code)
 ./docker/claude-code/build.sh
 
-# イメージ名を指定する場合
+# Build with a custom image name
 ./docker/claude-code/build.sh my-image-name
 
-# 起動（カレントディレクトリが /workspace にマウントされる）
+# Run (current directory is mounted as /workspace)
 ./docker/claude-code/run.sh
 
-# イメージ名を指定して起動
+# Run with a custom image name
 ./docker/claude-code/run.sh my-image-name
 ```
 
-## マウント
+## Mounts
 
-| ホスト | コンテナ |
-|--------|----------|
+| Host | Container |
+|------|-----------|
 | `~/.claude` | `/home/<username>/.claude` |
 | `$(pwd)` | `/workspace` |
 
-`~/.claude` をマウントすることで、ホスト側で認証済みの Claude Code セッションをそのままコンテナ内で使用できる。
+Mounting `~/.claude` allows the container to reuse an already-authenticated Claude Code session from the host.

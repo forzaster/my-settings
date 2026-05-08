@@ -4,22 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Purpose
 
-個人の設定ファイル（dotfiles）置き場。各ツールの設定ファイルをバージョン管理する汎用リポジトリ。
+Personal settings/dotfiles repository for version-controlling tool configuration files.
 
-設定ファイルはドメイン（ツール・用途）ごとにフォルダを切って格納する。
+All files committed to this repository must be written in English.
+
+Configuration files are organized by domain (tool/purpose), one folder per tool.
 
 ```
 my-settings/
-├── tmux/       # tmux設定
-├── docker/     # Docker関連
-└── <tool>/     # 新しいツールはここに追加
+├── tmux/       # tmux configuration
+├── docker/     # Docker-related files
+└── <tool>/     # add new tools here
 ```
 
 ## Review Guidelines
 
-コードレビュー時は以下を必ず確認すること。
+Check the following on every code review:
 
-- APIキー、パスワード、トークン、秘密鍵などの機密情報がハードコードされていないこと
-- 氏名、メールアドレス、電話番号、住所、ユーザーIDなど個人を識別できる情報（PII）が含まれていないこと
+- No hardcoded secrets such as API keys, passwords, tokens, or private keys
+- No personally identifiable information (PII) such as names, email addresses, phone numbers, postal addresses, or user IDs
 
-レビュー結果には、機密情報・個人情報が含まれていなかったかどうかを必ず明示すること。
+Review output must explicitly state whether any secrets or PII were found.
