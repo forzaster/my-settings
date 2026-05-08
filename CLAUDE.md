@@ -17,6 +17,17 @@ my-settings/
 └── <tool>/     # add new tools here
 ```
 
+## Development Workflow
+
+For every implementation task, follow these steps in order without skipping:
+
+1. **Plan** — outline the approach and list files to be changed
+2. **User confirmation** — present the plan and wait for explicit approval before writing any code
+3. **Implementation** — execute the approved plan
+4. **Local review** — run `/review` against the changes before committing
+5. **Fix critical findings** — address any major or critical issues raised in the review; minor suggestions may be left to the user's discretion
+6. **Commit** — create the commit only after the review is clean
+
 ## Review Guidelines
 
 Check the following on every code review:
