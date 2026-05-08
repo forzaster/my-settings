@@ -27,8 +27,9 @@ For every implementation task, follow these steps in order without skipping:
 4. **Local review** — run `/review` against the changes before committing
 5. **Fix critical findings** — address any major or critical issues raised in the review; minor suggestions may be left to the user's discretion
 6. **Commit** — create the commit only after the review is clean
-7. **Push** — the user handles `git push`; do not push automatically
-8. **Create PR** — once the user confirms the push is done, create a pull request
+7. **Notify review result** — present the final review outcome to the user before pushing
+8. **Push** — the user handles `git push`; do not push automatically
+9. **Create PR** — once the user confirms the push is done, create a pull request
 
 ## Review Guidelines
 
